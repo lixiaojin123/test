@@ -191,19 +191,24 @@ class ViewController: UIViewController {
     }
     
     @IBAction func percent(sender: AnyObject) {
+       
+        var x=0.0
+        
+        
         if  flag==1||flag==2||flag==3||flag==4{
             switch  flag{
             case 1:
-                temp=temp+(Double)(Text.text!)!
-                temp=temp/100
+                x=temp*(Double)(Text.text!)!/100
+                temp=temp+x
                 Text.text="\(temp)"
             case 2:
-                temp=temp-(Double)(Text.text!)!
-                temp=temp/100
+                x=temp*(Double)(Text.text!)!/100
+                temp=temp-x
                 Text.text="\(temp)"
+
             case 3:
-                temp=temp*(Double)(Text.text!)!
-                temp=temp/100
+                x=temp*(Double)(Text.text!)!/100
+                temp=temp*x
                 Text.text="\(temp)"
             case 4:
                 if(Double)(Text.text!)!==0
@@ -211,10 +216,9 @@ class ViewController: UIViewController {
                     Text.text="o不能为除数"
                 }
                 else{
-                    temp=temp/(Double)(Text.text!)!
-                    temp=temp/100
-                    Text.text="\(temp)"
-                }
+                    x=temp*(Double)(Text.text!)!/100
+                    temp=temp/x
+                    Text.text="\(temp)"                }
             default:
                 break
             }
@@ -231,8 +235,39 @@ class ViewController: UIViewController {
         Text.text="\(temp)"
     }
     @IBAction func clean(sender: AnyObject) {
+        
+        Text.text=""
+        temp=0
+        flag=0
+        
     }
     
+    @IBAction func reciprocal(sender: AnyObject) {
+        temp=(Double)(Text.text!)!
+        temp=1/temp
+        Text.text="\(temp)"
+        
+    }
+    
+    @IBAction func square(sender: AnyObject) {
+        temp=(Double)(Text.text!)!
+        temp=temp*temp
+        Text.text="\(temp)"
+    }
+
+    
+    @IBAction func squa(sender: AnyObject) {
+        temp=(Double)(Text.text!)!
+        temp=sqrt(temp)
+        Text.text="\(temp)"
+        
+    }
+    @IBAction func back(sender: AnyObject) {
+        var s=""
+        s = Text.text!
+        s.removeAtIndex(s.endIndex.predecessor())
+        Text.text=s
+    }
     @IBAction func equal(sender: AnyObject) {
         switch  flag{
         case 1:
