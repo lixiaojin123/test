@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Text: UITextField!
     var flag:Int=0;
     var temp:Double=0.0;
+    var xiaoshudian = true
     @IBAction func zero(sender: AnyObject) {
         if(Text.text=="0")
         {
@@ -146,21 +147,24 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func point(sender: AnyObject) {
-        if( Text.text=="0")
-        {
-            Text.text=""
-            Text.text=(Text.text)!+"."
+        if xiaoshudian == true  {
             
-        }
+            Text.text=(Text.text)!+"."
+            xiaoshudian = false
+            }
         else
         {
-            Text.text=(Text.text)!+".";
+            Text.text=(Text.text)!+"";
         }
+       
+        
     }
     @IBAction func add(sender: AnyObject) {
         if flag==0{
             temp=(Double)(Text.text!)!
             Text.text=""
+            xiaoshudian = true
+
         }
         flag=1
     }
@@ -169,6 +173,8 @@ class ViewController: UIViewController {
         if flag==0{
             temp=(Double)(Text.text!)!
             Text.text=""
+            xiaoshudian = true
+
         }
         flag=2
 
@@ -177,6 +183,8 @@ class ViewController: UIViewController {
         if flag==0{
             temp=(Double)(Text.text!)!
             Text.text=""
+            xiaoshudian = true
+
         }
         flag=3
 
@@ -185,6 +193,7 @@ class ViewController: UIViewController {
         if flag==0{
             temp=(Double)(Text.text!)!
             Text.text=""
+            xiaoshudian = true
         }
         flag=4
 
@@ -222,6 +231,7 @@ class ViewController: UIViewController {
             default:
                 break
             }
+           xiaoshudian = true
         }
         else{
         temp=(Double)(Text.text!)!
@@ -233,12 +243,15 @@ class ViewController: UIViewController {
         temp=(Double)(Text.text!)!
         temp=(-temp)
         Text.text="\(temp)"
+        xiaoshudian = true
     }
     @IBAction func clean(sender: AnyObject) {
         
         Text.text=""
         temp=0
         flag=0
+        xiaoshudian = true
+        
         
     }
     
@@ -246,6 +259,7 @@ class ViewController: UIViewController {
         temp=(Double)(Text.text!)!
         temp=1/temp
         Text.text="\(temp)"
+        xiaoshudian = true
         
     }
     
@@ -253,6 +267,7 @@ class ViewController: UIViewController {
         temp=(Double)(Text.text!)!
         temp=temp*temp
         Text.text="\(temp)"
+        xiaoshudian = true
     }
 
     
@@ -260,6 +275,7 @@ class ViewController: UIViewController {
         temp=(Double)(Text.text!)!
         temp=sqrt(temp)
         Text.text="\(temp)"
+        xiaoshudian = true
         
     }
     @IBAction func back(sender: AnyObject) {
@@ -267,6 +283,7 @@ class ViewController: UIViewController {
         s = Text.text!
         s.removeAtIndex(s.endIndex.predecessor())
         Text.text=s
+        xiaoshudian = true
     }
     @IBAction func equal(sender: AnyObject) {
         switch  flag{
